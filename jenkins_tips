@@ -1,0 +1,15 @@
+
+
+This happens when the Jenkins user is not added to the docker group. So first try to create a Jenkins user and add the user to the docker group. Follow the below steps:
+
+1. Create a docker group if you haven’t done it already. 
+
+$ sudo groupadd docker
+
+2. Create a Jenkins user and add it to the docker group.
+
+$ sudo usermod -aG docker $USER
+
+3. Log off, restart your Jenkins and try executing the program. If you’re still getting the same error then change the access permission of the /var/run/docker.sock  by using the following command.
+
+$ chmod 777 /var/run/docker.sock
